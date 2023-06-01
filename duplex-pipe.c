@@ -104,9 +104,9 @@ main(int argc, char ** argv)
 		}
 	}
 
-	if (     i ==  argc    ) fprintf(stderr, PREFIX "block separator '' missing \n"), exit(100);
-	if (master == slave + 1) fprintf(stderr, PREFIX "empty slave block\n"          ), exit(100);
-	if (     i ==  argc - 1) fprintf(stderr, PREFIX "empty master block\n"         ), exit(100);
+	if (     i ==  argc    ) fprintf(stderr, PREFIX "block separator '' missing \n"), usage();
+	if (master == slave + 1) fprintf(stderr, PREFIX "empty slave block\n"          ), usage();
+	if (     i ==  argc - 1) fprintf(stderr, PREFIX "empty master block\n"         ), usage();
 
 	struct pipe std = make_pipe(), rev = make_pipe();
 
