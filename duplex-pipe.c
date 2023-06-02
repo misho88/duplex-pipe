@@ -4,7 +4,7 @@
 #include <errno.h>
 #include <sys/wait.h>
 
-#define NAME "duplex-pipeline"
+#define NAME "duplex-pipe"
 #define PREFIX NAME ": "
 
 void
