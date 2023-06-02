@@ -5,6 +5,24 @@ bidirection communication between programs
 
 `duplex-pipe` sets up two pipes, `std` and `rev`, where `std` works like in normal shell piping wherein `stdout` of the data-producing application connects to `stdin` of the data-consuming application. `rev` goes the other way, so that the consumer can control the producer. The applications in question have to support this, of course.
 
+# usage
+
+The syntax is
+
+```
+duplex-pipe [-i STDIN_FD(0)] [-o STDOUT_FD(1)] [-I REVIN_FD(0)] [-O REVOUT_FD(1)] slave... '' master...
+```
+
+`-i` the FD assigned on `master...` to the read end of the forward pipe (default: `0`/`stdin`)
+
+`-o` the FD assigned on `slave...` to the write end of the forward pipe (default: `1`/`stdout`)
+
+`-I` the FD assigned on `slave...` to the read end of the reverse pipe (default: `0`/`stdin`)
+
+`-O` the FD assigned on `master...` to the write end of the reverse pipe (default: `1`/`stdout`)
+
+`''` empty argument which separates the `argv`s for the master and slave.
+
 # examples
 
 Just two applications, `2nd` controls `1st`. Note that, with the default arguments, `2nd`'s standard output points back at `1st`, so I'm using standard error to print:
